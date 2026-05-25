@@ -1,0 +1,10 @@
+MySQL has been installed.
+
+Primary write service:
+  {{ include "mysql.fullname" . }}-write.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}
+
+Read service:
+  {{ include "mysql.fullname" . }}-read.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}
+
+Headless service:
+  {{ include "mysql.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}

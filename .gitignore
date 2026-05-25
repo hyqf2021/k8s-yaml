@@ -1,0 +1,6 @@
+.vscode/
+*.tmp
+*.bak
+*.swp
+*.tgz
+charts/

@@ -1,0 +1,51 @@
+replicaCount: 3
+
+image:
+  repository: mysql
+  tag: "8.0"
+  pullPolicy: IfNotPresent
+
+busybox:
+  repository: busybox
+  tag: "1.36"
+  pullPolicy: IfNotPresent
+
+auth:
+  rootPassword: rootpassword
+  replicationPassword: replicatep_pass
+  existingSecret: ""
+  rootPasswordKey: root-password
+  replicationPasswordKey: replication-password
+
+service:
+  port: 3306
+
+persistence:
+  enabled: true
+  storageClassName: nfs-client
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    cpu: "1"
+    memory: 1Gi
+
+livenessProbe:
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+readinessProbe:
+  initialDelaySeconds: 15
+  periodSeconds: 5
+
+podLabels: {}
+podAnnotations: {}
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
