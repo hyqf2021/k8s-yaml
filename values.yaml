@@ -2,7 +2,7 @@ replicaCount: 3
 
 image:
   repository: mysql
-  tag: "9.7"
+  tag: "8.0"
   pullPolicy: IfNotPresent
 
 busybox:
