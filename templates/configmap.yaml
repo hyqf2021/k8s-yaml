@@ -6,6 +6,6 @@ metadata:
     {{- include "mysql.labels" . | nindent 4 }}
 data:
   init-replication-user.sql: |
-    CREATE USER IF NOT EXISTS 'replica'@'%' IDENTIFIED BY '${REPL_PASSWORD}';
+    CREATE USER IF NOT EXISTS 'replica'@'%' IDENTIFIED WITH mysql_native_password BY '${REPL_PASSWORD}';
     GRANT REPLICATION SLAVE ON *.* TO 'replica'@'%';
     FLUSH PRIVILEGES;
